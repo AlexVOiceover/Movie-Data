@@ -1,0 +1,100 @@
+h1 {color: rgb(104, 76, 40);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;}
+
+.h1right {text-align: right;}
+
+h2 {color: rgb(104, 76, 40);
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    text-align: left;
+    margin: 1em;}
+
+h3 {color: rgb(104, 76, 40);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;} 
+
+p  {font-family: 'Roboto', sans-serif;
+    margin: 1em;
+    text-align: left;}
+
+article {font-family: 'Roboto', sans-serif;
+    text-align: left;
+    margin-top: 1em;
+    max-height: 50px;}
+
+body {
+    padding: 2em;} 
+
+figure {
+    display: inline-block;
+    border: 2px solid;}
+
+ img {
+    vertical-align: center; 
+    margin-top: 1em;
+    flex: 1 1 0; 
+    width: 100%;
+    height: 100%;} 
+
+.flex-container {
+    display: flex;
+    gap: 2em; 
+    flex-direction: row;
+    flex-wrap: wrap;    
+    justify-content: space-evenly;
+    padding: 2em;}
+
+.flex-nested-container {
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;     
+    /*align-content: flex-start;*/
+    justify-content: flex-start;
+    border: 1px solid;
+    padding: 2em;
+    width: 200px;
+}
+
+.flex-nested-container-small {
+    flex-grow: 2;
+    background: rgb(248, 233, 228);
+    order: 1}
+
+.flex-nested-container-medium {
+    flex-grow: 3;
+    background: rgb(230, 238, 241);
+    order: 2}
+
+.flex-nested-container-large {
+    flex-grow: 4;
+    background: rgb(238, 238, 238);
+    order: 3}
+
+/* This is trick to detect smartphones 
+@media all and (pointer:none) , (pointer:coarse) {
+    body{background: rgb(230, 238, 241);}
+
+    .flex-container {flex-direction: row;
+                    }} */
+
+.dropbtn {
+    background-color: #d4d4d4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #696969;}
+
+.dropdown {
+    position: relative;
+    display: inline-block;}
+
+.dropdown-content {
+   display: none;
+   border: none;}

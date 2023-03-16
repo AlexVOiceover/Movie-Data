@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" href="images/favicon.ico">
+        <title>Project Gallery</title>
+        <link rel="stylesheet" href="styles/my-styles.css">
+        <meta name="description" content="Practise storing information in JS objects">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        
+    </head>
+ 
+    <body>
+
+        <header>
+            <h1 class="h1right">Movie Data</h1>
+        </header>
+
+        <main>
+            <h1>Alexander's previous projects</h1>
+
+            <section>
+                <h2>Projects that involve 3D printing, hardware and software.</h2>
+                <p>3D printing is great when combined with basic electronics and programming. Here are some examples</p>
+                
+                    <div class="flex-container">
+                        
+                        <div class="flex-nested-container flex-nested-container-small">
+                            <h3>3D Printer</h3>
+                            <img src="images\Printer01.jpg" alt="3D Printer">
+                            <div class="dropdown">
+                                
+                                <button id="button1" class="dropbtn">Description</button>
+                                <article id="article1" class="dropdown-content">Using an Ender3 Pro as a starting point, this printer was upgraded in every simple aspect, both software and hardware-wise.</article>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-nested-container flex-nested-container-medium">
+                            <h3>Smart Spinning Bike</h3>
+                            <img src="images\Bike03.jpg" alt="Spinning bike">
+                            <div class="dropdown">
+                                
+                                <button id="button2" class="dropbtn">Description</button>
+                                <article id="article2" class="dropdown-content">In this project I modified an old-school spinning bike using an arduino to show in a LED screen the resistance and the cadence.</article>
+                            </div>
+                        </div>
+
+                        <div class="flex-nested-container flex-nested-container-large">
+                            <h3>Bench PSU</h3>
+                            <img src="images\PSU01.jpg" alt="Bench PSU">
+                            <div class="dropdown">
+                            
+                                <button id="button3" class="dropbtn">Description</button>
+                                <article id="article3" class="dropdown-content">This power supply was built using components from Aliexpress and a 3D printed case. It can deliver 50V and 5A.</article>
+                            </div>                              
+                        </div>
+                    </div>
+                
+            </section>
+                    
+        </main>
+        
+        <footer>
+            <p style="text-align:center">
+                No Copyright
+            </p>                                 
+        </footer>  
+
+        <script src="scripts/my-script.js"></script>  
+
+    </body>
+</html>
