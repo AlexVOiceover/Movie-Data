@@ -50,10 +50,8 @@ function drawMovieCards(){
   //Reset flexContainerGlobal
   flexContainerGlobal.innerHTML = '';
 
-
   // Loop through the movie titles in the movieData object
   for (let movieTitle in movieData) {
-
     
     // Create a new div element for each movie title
     let movieCardLine = document.createElement('div');
@@ -93,9 +91,6 @@ function drawMovieCards(){
 }
 
 drawMovieCards();
-
-
-
 
 function sortMovieCards(sortFunction) {
   // Get all the movie cards in the flex container
@@ -140,7 +135,6 @@ sortTitleButton.addEventListener('click', function() {
   });
 });
 
-
   //TEST DATA
   document.querySelector('#titleInput').value = 'El Ete y el Oto';
   document.querySelector('#plotInput').value = 'The plot bla bla';
@@ -171,10 +165,6 @@ addMovieButton.addEventListener('click', function() {
   // Add the new movie to the movieData object
   movieData[newTitle] = newMovie;
 
-  console.log(newTitle);
-  console.log(newMovie);
-  console.log(movieData);
-
   // Reload Flex Container
   drawMovieCards();
 
@@ -185,7 +175,5 @@ addMovieButton.addEventListener('click', function() {
   document.querySelector('#runtimeInput').value = '';
   document.querySelector('#ratingInput').value = '';
   document.querySelector('#yearInput').value = '';
-
-
 });
 
