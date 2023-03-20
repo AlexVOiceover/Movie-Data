@@ -38,48 +38,56 @@ let movieData = {
 };
 
 // Select the Flex Container
-const flexContainerGlobal = document.querySelector('.flex-container');
+let flexContainerGlobal = document.querySelector('.flex-container');
+
+//Select the buttons
 const sortYearButton = document.querySelector('#orderByYearButton');
 const sortTitleButton = document.querySelector('#orderByTitleButton');
+const addMovieButton = document.querySelector('#addMovie');
 
+function drawMovieCards(){
+  // Loop through the movie titles in the movieData object
+  for (let movieTitle in movieData) {
+    // Create a new div element for each movie title
+    let movieCardLine = document.createElement('div');
+    movieCardLine.setAttribute('class', 'flex-nested-container');
 
-// Loop through the movie titles in the movieData object
-for (let movieTitle in movieData) {
-  // Create a new div element for each movie title
-  let movieCardLine = document.createElement('div');
-  movieCardLine.setAttribute('class', 'flex-nested-container');
+    // Create separate elements for each piece of information
+    let titleElement = document.createElement('h2');
+    let plotElement = document.createElement('p');
+    let castElement = document.createElement('p');
+    let runtimeElement = document.createElement('p');
+    let ratingElement = document.createElement('p');
+    let yearElement = document.createElement('p');
 
-  // Create separate elements for each piece of information
-  let titleElement = document.createElement('h2');
-  let plotElement = document.createElement('p');
-  let castElement = document.createElement('p');
-  let runtimeElement = document.createElement('p');
-  let ratingElement = document.createElement('p');
-  let yearElement = document.createElement('p');
+    // Add classes to elements
+    yearElement.setAttribute('class', 'year'); 
+    titleElement.setAttribute('class', 'title'); 
 
-  // Add classes to elements
-  yearElement.setAttribute('class', 'year'); 
-  titleElement.setAttribute('class', 'title'); 
+    // Populate the elements with the relevant data
+    titleElement.textContent = movieTitle;
+    plotElement.textContent = "Plot: " + movieData[movieTitle].plot;
+    castElement.textContent = "Cast: " + movieData[movieTitle].cast.join(', ');
+    runtimeElement.textContent = "Runtime: " + movieData[movieTitle].runtime + " minutes";
+    ratingElement.textContent = "Rating: " + movieData[movieTitle].rating;
+    yearElement.textContent = "Year: " + movieData[movieTitle].year;
 
-  // Populate the elements with the relevant data
-  titleElement.textContent = movieTitle;
-  plotElement.textContent = "Plot: " + movieData[movieTitle].plot;
-  castElement.textContent = "Cast: " + movieData[movieTitle].cast.join(', ');
-  runtimeElement.textContent = "Runtime: " + movieData[movieTitle].runtime + " minutes";
-  ratingElement.textContent = "Rating: " + movieData[movieTitle].rating;
-  yearElement.textContent = "Year: " + movieData[movieTitle].year;
+    // Append the separate elements to the movie card div
+    movieCardLine.appendChild(titleElement);
+    movieCardLine.appendChild(plotElement);
+    movieCardLine.appendChild(castElement);
+    movieCardLine.appendChild(runtimeElement);
+    movieCardLine.appendChild(ratingElement);
+    movieCardLine.appendChild(yearElement);
 
-  // Append the separate elements to the movie card div
-  movieCardLine.appendChild(titleElement);
-  movieCardLine.appendChild(plotElement);
-  movieCardLine.appendChild(castElement);
-  movieCardLine.appendChild(runtimeElement);
-  movieCardLine.appendChild(ratingElement);
-  movieCardLine.appendChild(yearElement);
-
-  // Append the new div element to the flex container
-  flexContainerGlobal.appendChild(movieCardLine);
+    // Append the new div element to the flex container
+    flexContainerGlobal.appendChild(movieCardLine);
+  }
 }
+
+drawMovieCards();
+
+
 
 
 function sortMovieCards(sortFunction) {
@@ -124,3 +132,55 @@ sortTitleButton.addEventListener('click', function() {
     return 0;
   });
 });
+
+
+  //TEST DATA
+  document.querySelector('#titleInput').value = 'El Ete y el Oto';
+  document.querySelector('#plotInput').value = 'The plot bla bla';
+  document.querySelector('#castInput').value = 'Alfonso, Tomas, Pedrito';
+  document.querySelector('#runtimeInput').value = '1231';
+  document.querySelector('#ratingInput').value = '10';
+  document.querySelector('#yearInput').value = '1945';
+
+// Add event listener to add movie button
+addMovieButton.addEventListener('click', function() {
+
+  const newTitle = document.querySelector('#titleInput').value;
+  const newPlot = document.querySelector('#plotInput').value;
+  const newCast = document.querySelector('#castInput').value.split(',');
+  const newRuntime = document.querySelector('#runtimeInput').value;
+  const newRating = document.querySelector('#ratingInput').value;
+  const newYear = document.querySelector('#yearInput').value; //Check if works well with dates
+
+  // Create a new movie object
+  let newMovie = {
+    plot: newPlot,
+    cast: newCast,
+    runtime: newRuntime,
+    rating: newRating,
+    year: newYear,
+  };
+
+  console.log(newTitle);
+  console.log(newMovie);
+
+  // Add the new movie to the movieData object
+  movieData[newTitle] = newMovie;
+
+  //Reload Flex Container
+ // document.querySelector('.flex-container').classList.add("prelative");
+ drawMovieCards();
+
+  // Clear the form
+  document.querySelector('#titleInput').value = '';
+  document.querySelector('#plotInput').value = '';
+  document.querySelector('#castInput').value = '';
+  document.querySelector('#runtimeInput').value = '';
+  document.querySelector('#ratingInput').value = '';
+  document.querySelector('#yearInput').value = '';
+
+
+  console.log(movieData);
+
+});
+
