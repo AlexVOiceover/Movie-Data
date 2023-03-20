@@ -46,8 +46,15 @@ const sortTitleButton = document.querySelector('#orderByTitleButton');
 const addMovieButton = document.querySelector('#addMovie');
 
 function drawMovieCards(){
+
+  //Reset flexContainerGlobal
+  flexContainerGlobal.innerHTML = '';
+
+
   // Loop through the movie titles in the movieData object
   for (let movieTitle in movieData) {
+
+    
     // Create a new div element for each movie title
     let movieCardLine = document.createElement('div');
     movieCardLine.setAttribute('class', 'flex-nested-container');
@@ -93,7 +100,7 @@ drawMovieCards();
 function sortMovieCards(sortFunction) {
   // Get all the movie cards in the flex container
   let movieCardDivs = Array.from(flexContainerGlobal.children);
-
+  console.log("MovieCardDivs en sort:" + movieCardDivs);
   // Sort the movie cards using the given function
   movieCardDivs.sort(sortFunction);
 
@@ -161,15 +168,15 @@ addMovieButton.addEventListener('click', function() {
     year: newYear,
   };
 
-  console.log(newTitle);
-  console.log(newMovie);
-
   // Add the new movie to the movieData object
   movieData[newTitle] = newMovie;
 
-  //Reload Flex Container
- // document.querySelector('.flex-container').classList.add("prelative");
- drawMovieCards();
+  console.log(newTitle);
+  console.log(newMovie);
+  console.log(movieData);
+
+  // Reload Flex Container
+  drawMovieCards();
 
   // Clear the form
   document.querySelector('#titleInput').value = '';
@@ -179,8 +186,6 @@ addMovieButton.addEventListener('click', function() {
   document.querySelector('#ratingInput').value = '';
   document.querySelector('#yearInput').value = '';
 
-
-  console.log(movieData);
 
 });
 
