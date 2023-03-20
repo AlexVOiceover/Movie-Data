@@ -1,6 +1,6 @@
 console.log("Initialising console");
 
-//Create teh movieData Object
+//Create the movieData Object
 let movieData = {
   "The Darjeeling Limited": {
     plot: "A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.",
@@ -37,16 +37,17 @@ let movieData = {
   },
 };
 
-
 // Select the Flex Container
 const flexContainerGlobal = document.querySelector('.flex-container');
+const sortYearButton = document.querySelector('#orderByYearButton');
+const sortTitleButton = document.querySelector('#orderByTitleButton');
 
 
 // Loop through the movie titles in the movieData object
 for (let movieTitle in movieData) {
   // Create a new div element for each movie title
   let movieCardLine = document.createElement('div');
-  movieCardLine.setAttribute('class', '.flex-nested-container');
+  movieCardLine.setAttribute('class', 'flex-nested-container');
 
   // Create separate elements for each piece of information
   let titleElement = document.createElement('h2');
@@ -56,13 +57,17 @@ for (let movieTitle in movieData) {
   let ratingElement = document.createElement('p');
   let yearElement = document.createElement('p');
 
+  // Add classes to elements
+  yearElement.setAttribute('class', 'year'); 
+  titleElement.setAttribute('class', 'title'); 
+
   // Populate the elements with the relevant data
   titleElement.textContent = movieTitle;
-  plotElement.textContent = `Plot: ${movieData[movieTitle].plot}`;
-  castElement.textContent = `Cast: ${movieData[movieTitle].cast.join(', ')}`;
-  runtimeElement.textContent = `Runtime: ${movieData[movieTitle].runtime} minutes`;
-  ratingElement.textContent = `Rating: ${movieData[movieTitle].rating}`;
-  yearElement.textContent = `Year: ${movieData[movieTitle].year}`;
+  plotElement.textContent = "Plot: " + movieData[movieTitle].plot;
+  castElement.textContent = "Cast: " + movieData[movieTitle].cast.join(', ');
+  runtimeElement.textContent = "Runtime: " + movieData[movieTitle].runtime + " minutes";
+  ratingElement.textContent = "Rating: " + movieData[movieTitle].rating;
+  yearElement.textContent = "Year: " + movieData[movieTitle].year;
 
   // Append the separate elements to the movie card div
   movieCardLine.appendChild(titleElement);
@@ -77,18 +82,45 @@ for (let movieTitle in movieData) {
 }
 
 
+function sortMovieCards(sortFunction) {
+  // Get all the movie cards in the flex container
+  let movieCardDivs = Array.from(flexContainerGlobal.children);
+
+  // Sort the movie cards using the given function
+  movieCardDivs.sort(sortFunction);
+
+  // Remove existing movie cards from the flex container
+  movieCardDivs.forEach(function(card) {
+    card.remove();
+  });
+
+  // Append the sorted movie cards to the flex container
+  movieCardDivs.forEach(function(card) {
+    flexContainerGlobal.appendChild(card);
+  });
+}
 
 
+// Add event listener to sort buttons
+sortYearButton.addEventListener('click', function() {
+  sortMovieCards(function(a, b) {
+    const yearA = parseInt(a.querySelector('.year').textContent.substring(6)); //With substring(6) I extract the year
+    const yearB = parseInt(b.querySelector('.year').textContent.substring(6));
+    return yearA - yearB;
+  });
+});
 
+sortTitleButton.addEventListener('click', function() {
+  sortMovieCards(function(a, b) {
+    const titleA = a.querySelector('.title').textContent.toUpperCase();
+    const titleB = b.querySelector('.title').textContent.toUpperCase();
 
-//Shows an array as a String using space as separator
-//const myArray = ['I', 'love', 'chocolate', 'frogs'];
-//const madeAString = myArray.join(' ');
-//console.log(madeAString);
-// returns 'I love chocolate frogs'
-
-
-//Example of arrow function
-//const textBox = document.querySelector("#textBox");
-//const output = document.querySelector("#output");
-//textBox.addEventListener('keydown', (event) => output.textContent = `You pressed "${event.key}".`);
+    if (titleA < titleB) {
+      return -1;
+    }
+    if (titleA > titleB) {
+      return 1;
+    }
+    return 0;
+  });
+});
