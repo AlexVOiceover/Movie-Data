@@ -17,12 +17,7 @@ let movieData = {
   "Fantastic Mr. Fox": {
     year: 2009,
     plot: "An urbane fox cannot resist returning to his farm raiding ways and then must help his community survive the farmers' retaliation.",
-    cast: [
-      "George Clooney",
-      "Meryl Streep",
-      "Bill Murray",
-      "Jason Schwartzman",
-    ],
+    cast: ["George Clooney","Meryl Streep","Bill Murray","Jason Schwartzman"],
     runtime: 147,
     rating: 7.9,
   },
@@ -36,14 +31,14 @@ let movieData = {
 };
 
 // Get the Flex Container
-const flexContainerGlobal = document.querySelector(".flex-container");
+const flexContainerGlobal = document.querySelector(".flex-container-movie-cards");
 
 //Get the buttons
 const sortYearButton = document.querySelector("#orderByYearButton");
 const sortTitleButton = document.querySelector("#orderByTitleButton");
 const addMovieButton = document.querySelector("#addMovie");
 
-// Function to draw the movie cards on the screen
+// Function to draw the movieData object content on the screen
 function drawMovieCards(){
 
   //Reset flexContainerGlobal
@@ -90,21 +85,16 @@ function drawMovieCards(){
 
   }
 }
+
 drawMovieCards();
 
 
 function sortMovieCards(sortFunction) {
   // Get all the children from flexcontainerGlobal, create an Array and store it in moiveCardDivs
   let movieCardDivs = Array.from(flexContainerGlobal.children);
-  console.log("MovieCardDivs en sort:" + movieCardDivs);
 
   // Sort the movie cards using the given function
   movieCardDivs.sort(sortFunction);
-
-  // Remove existing movie cards from the flex container
-  movieCardDivs.forEach(function(card) {
-    card.remove();
-  });
 
   // Append the sorted movie cards to the flex container
   movieCardDivs.forEach(function(card) {
@@ -113,7 +103,7 @@ function sortMovieCards(sortFunction) {
 }
 
 
-// Add event listener to sort by year
+// Add event listener to sort by year button
 sortYearButton.addEventListener("click", function() {
   sortMovieCards(function(a, b) {
     const yearA = parseInt(a.querySelector(".year").textContent.substring(6)); //With substring(6) I extract the year
@@ -122,7 +112,7 @@ sortYearButton.addEventListener("click", function() {
   });
 });
 
-// Add event listener to sort by title
+// Add event listener to sort by title button
 sortTitleButton.addEventListener("click", function() {
   sortMovieCards(function(a, b) {
     const titleA = a.querySelector(".title").textContent.toUpperCase();
@@ -139,13 +129,13 @@ sortTitleButton.addEventListener("click", function() {
 });
 
 
-  //TEST DATA
-  document.querySelector("#titleInput").value = "El Ete y el Oto";
-  document.querySelector("#plotInput").value = "This is just some test data";
-  document.querySelector("#castInput").value = "Alfonso, Tomas, Pedrito";
-  document.querySelector("#runtimeInput").value = "120";
-  document.querySelector("#ratingInput").value = "9.4";
-  document.querySelector("#yearInput").value = "1975";
+// TEST DATA
+document.querySelector("#titleInput").value = "El Ete y el Oto";
+document.querySelector("#plotInput").value = "This is just some test data";
+document.querySelector("#castInput").value = "Alfonso, Tomas, Pedrito";
+document.querySelector("#runtimeInput").value = "120";
+document.querySelector("#ratingInput").value = "9.4";
+document.querySelector("#yearInput").value = "1975";
 
   // Add event listener to add movie button
 addMovieButton.addEventListener('click', function() {
@@ -155,7 +145,7 @@ addMovieButton.addEventListener('click', function() {
   const newCast = document.querySelector('#castInput').value.split(',');
   const newRuntime = document.querySelector('#runtimeInput').value;
   const newRating = document.querySelector('#ratingInput').value;
-  const newYear = document.querySelector('#yearInput').value; //Check if works well with dates
+  const newYear = document.querySelector('#yearInput').value;
 
   // Create a new movie object
   let newMovie = {
@@ -179,5 +169,5 @@ addMovieButton.addEventListener('click', function() {
   document.querySelector("#runtimeInput").value = "";
   document.querySelector("#ratingInput").value = "";
   document.querySelector("#yearInput").value = "";
-
-});
+ }
+);

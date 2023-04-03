@@ -16,28 +16,25 @@ h3 {color: rgb(104, 76, 40);
 
 p  {font-family: 'Roboto', sans-serif;
     margin: 0.4em;
-    text-align: left;
-}
+    text-align: left;}
 
 /* I couldn't make this work with first-word */
 p::first-letter {
     font-weight: bolder;
-    font-size: larger;
-  }
+    font-size: larger;}
 
-body {
-    padding: 2em;} 
+body { padding: 2em;} 
 
-.flex-container {
+.flex-container-movie-cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;    
     justify-content: flex-start;
     padding: 2em;
     row-gap: 4em;
-    column-gap: 2em;
-    }
+    column-gap: 2em;}
 
+/* This flex containers will be use to create the individual movie cards */
 .flex-nested-container {
     display: flex;
     flex-direction: column; 
@@ -46,8 +43,7 @@ body {
     border: 1px solid;
     max-width: 20em; 
     background-color: white;
-    filter: drop-shadow(12px 12px 6px rgb(53, 53, 53));
-}
+    filter: drop-shadow(12px 12px 6px rgb(53, 53, 53));}
 
 .flex-container-form {
     display: flex;
@@ -57,14 +53,15 @@ body {
     border: 1px solid;
     margin: 2em;
     padding: 2em;
-  
     max-width: 38em;
     background-color: white;
-    filter: drop-shadow(12px 12px 6px rgb(53, 53, 53));
-   }
+    filter: drop-shadow(12px 12px 6px rgb(53, 53, 53));}
 
-input{width: 100%}
-textarea{width: 100%}
+input{width: 100%;
+    font-family: 'Roboto', sans-serif;}
+
+textarea{width: 100%;
+    font-family: 'Roboto', sans-serif;}
 
 .myBtn {
     background-color: #777777;
@@ -79,9 +76,7 @@ textarea{width: 100%}
 
 /* This is trick to detect smartphones */
 @media all and (pointer:none) , (pointer:coarse) {
+
     body{background: rgb(230, 238, 241);}
-
-    .flex-container {flex-direction: row;
-                    }} 
-
-
+    .flex-container {flex-direction: row;}
+}
